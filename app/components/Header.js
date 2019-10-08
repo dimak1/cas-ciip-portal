@@ -86,7 +86,6 @@ const Header = () => {
               top: 0px;
               //position: fixed;
               width: 100%;
-              margin-bottom: 40px;
             }
             body {
               padding: 40px;
