@@ -114,7 +114,11 @@ class Landing extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header
+          isLoggedIn
+          userName={'Mary Jane'}
+          occupation={'Admin Rio Tinto'}
+        />
         <div style={headerBackground}>
           <h1 style={heading}>Welcome to your CIIP Portal</h1>
           <p style={headingSubtext}>
