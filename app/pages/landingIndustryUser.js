@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import {Button, Accordion, Card, Container, Col, Row} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Button, Accordion, Card, Container, Col, Row } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const organizations = [
-  {orgName: 'Rio Tinto Alcan', facilities: ['Facility1', 'Facility2']},
+  { orgName: 'Rio Tinto Alcan', facilities: ['Facility1', 'Facility2'] },
   {
     orgName: 'Shell Coporation',
     facilities: ['Facility1', 'Facility2', 'Facility3']
   },
-  {orgName: 'Shanghai Eletric', facilities: ['Facility1', 'Facility2']}
+  { orgName: 'Shanghai Eletric', facilities: ['Facility1', 'Facility2'] }
 ];
 
 class userProfile extends Component {
@@ -20,15 +20,15 @@ class userProfile extends Component {
       for (let j = 0; j < organizations[i].facilities.length; j++) {
         facilitiesArr.push(
           <Accordion.Collapse eventKey={i}>
-            <Card.Body style={{borderBottom: '1px solid #d3d3d3'}}>
-              <div style={{fontWeight: 'bold'}}>
+            <Card.Body data-testid="card" style={{ borderBottom: '1px solid #d3d3d3' }}>
+              <div style={{ fontWeight: 'bold' }}>
                 {organizations[i].facilities[j]}
 
-                <Button variant="primary" style={{marginLeft: '30px'}}>
+                <Button variant="primary" style={{ marginLeft: '30px' }}>
                   Apply for CIIP for this facility
                 </Button>
               </div>
-              <p style={{marginTop: '10px'}}>
+              <p style={{ marginTop: '10px' }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor.
               </p>
@@ -40,7 +40,7 @@ class userProfile extends Component {
       const cardBody = facilitiesArr.map(facilities => <div>{facilities}</div>);
       organizationArr.push(
         <Card>
-          <Card.Header>
+          <Card.Header data-testid="btn-header">
             <Accordion.Toggle as={Button} variant="link" eventKey={i}>
               {organizations[i].orgName}
             </Accordion.Toggle>
@@ -186,7 +186,7 @@ class userProfile extends Component {
                 </p>
               </Row>
             </Col>
-            <Col md={{span: 1}} />
+            <Col md={{ span: 1 }} />
             <Col>
               <h2>Select Organizations</h2>
               <Accordion className="accordion">
@@ -195,7 +195,7 @@ class userProfile extends Component {
             </Col>
           </Row>
         </Container>
-        <p style={{padding: '50px'}} />
+        <p style={{ padding: '50px' }} />
         <Footer />
       </div>
     );

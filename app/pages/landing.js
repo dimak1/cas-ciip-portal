@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Button, Modal, Container, Row, Col, Card} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Button, Modal, Container, Row, Col, Card } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -61,16 +61,16 @@ const CardTitle2 = {
 };
 
 class Landing extends Component {
-  state = {show: false};
+  state = { show: false };
 
   showModal = e => {
     e.preventDefault();
-    this.setState({show: true});
+    this.setState({ show: true });
     console.log(this.state);
   };
 
   hideModal = e => {
-    this.setState({show: false});
+    this.setState({ show: false });
   };
 
   renderModal = () => {
@@ -81,13 +81,14 @@ class Landing extends Component {
           size="lg"
           show={this.state.show}
           onHide={this.hideModal}
+          data-testid="modal"
         >
           <Modal.Header closeButton>
-            <Modal.Title style={{color: '#003366'}}>
+            <Modal.Title style={{ color: '#003366' }}>
               You will now be redirected to the BCEID site
             </Modal.Title>
           </Modal.Header>
-          <Modal.Body style={{padding: '25px'}}>
+          <Modal.Body style={{ padding: '25px' }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -98,10 +99,12 @@ class Landing extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button
-              style={{backgroundColor: '#003366', float: 'left'}}
+              style={{ backgroundColor: '#003366', float: 'left' }}
               size="lg"
               href="https://www.bceid.ca/"
               target="_blank"
+              data-testid="btn-get-portal"
+              className="btn-portal"
             >
               Continue to BCEID registration
             </Button>
@@ -135,12 +138,12 @@ class Landing extends Component {
               <Card style={Cards}>
                 <Card.Body style={CardBody1}>
                   <Card.Title style={CardTitle1}>Login with BCEID</Card.Title>
-                  <Card.Text style={{color: 'white'}}>
+                  <Card.Text style={{ color: 'white' }}>
                     Applying for CIIP requires having a valid BCEID. If you have
                     already acquired yours click below to Login
                   </Card.Text>
                   <Button
-                    style={{backgroundColor: '#EDA500', color: '#003366'}}
+                    style={{ backgroundColor: '#EDA500', color: '#003366' }}
                     size="lg"
                   >
                     Login with BCEID
@@ -150,17 +153,18 @@ class Landing extends Component {
             </Col>
             <Col>
               <Card style={Cards}>
-                <Card.Body style={{padding: '50px'}}>
+                <Card.Body style={{ padding: '50px' }}>
                   <Card.Title style={CardTitle2}>Get a BCEID</Card.Title>
-                  <Card.Text style={{color: '#003366'}}>
+                  <Card.Text style={{ color: '#003366' }}>
                     Applying for CIIP requires having a valid BCEID. Click here
                     to acquire a BCEID. Once you have it, you can come to this
                     page and proceed.
                   </Card.Text>
                   <Button
-                    style={{backgroundColor: '#003366'}}
+                    style={{ backgroundColor: '#003366' }}
                     size="lg"
                     onClick={this.showModal}
+                    data-testid="get-modal"
                   >
                     Get a BCEID
                   </Button>
