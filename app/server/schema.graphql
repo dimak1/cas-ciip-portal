@@ -1658,12 +1658,6 @@ type CreateFormResultPayload {
   """Reads a single `Application` that is related to this `FormResult`."""
   applicationByApplicationId: Application
 
-  """Reads a single `FormJson` that is related to this `FormResult`."""
-  formJsonByFormId: FormJson
-
-  """Reads a single `User` that is related to this `FormResult`."""
-  userByUserId: User
-
   """An edge for our `FormResult`. May be used by Relay 1."""
   formResultEdge(
     """The method to use when ordering `FormResult`."""
@@ -2160,7 +2154,7 @@ input DeleteFormResultByRowIdInput {
   """
   clientMutationId: String
 
-  """Unique ID for the result"""
+  """Unique ID for the form"""
   rowId: Int!
 }
 
@@ -2197,12 +2191,6 @@ type DeleteFormResultPayload {
 
   """Reads a single `Application` that is related to this `FormResult`."""
   applicationByApplicationId: Application
-
-  """Reads a single `FormJson` that is related to this `FormResult`."""
-  formJsonByFormId: FormJson
-
-  """Reads a single `User` that is related to this `FormResult`."""
-  userByUserId: User
 
   """An edge for our `FormResult`. May be used by Relay 1."""
   formResultEdge(
@@ -3166,13 +3154,13 @@ type FormResult implements Node {
   """
   id: ID!
 
-  """Unique ID for the result"""
+  """Unique ID for the form"""
   rowId: Int!
 
-  """The id of the form"""
+  """The Unique ID of the form"""
   formId: Int!
 
-  """The id of the User"""
+  """The Unique ID of the Application"""
   userId: Int!
   applicationId: Int!
   submissionDate: Datetime
@@ -3263,13 +3251,13 @@ input FormResultCondition {
 
 """An input for mutations affecting `FormResult`"""
 input FormResultInput {
-  """Unique ID for the result"""
+  """Unique ID for the form"""
   rowId: Int
 
-  """The id of the form"""
+  """The Unique ID of the form"""
   formId: Int!
 
-  """The id of the User"""
+  """The Unique ID of the Application"""
   userId: Int!
   applicationId: Int!
   submissionDate: Datetime
@@ -3294,13 +3282,13 @@ input FormResultInput {
 Represents an update to a `FormResult`. Fields that are set will be updated.
 """
 input FormResultPatch {
-  """Unique ID for the result"""
+  """Unique ID for the form"""
   rowId: Int
 
-  """The id of the form"""
+  """The Unique ID of the form"""
   formId: Int
 
-  """The id of the User"""
+  """The Unique ID of the Application"""
   userId: Int
   applicationId: Int
   submissionDate: Datetime
@@ -5948,7 +5936,7 @@ input UpdateFormResultByRowIdInput {
   """
   formResultPatch: FormResultPatch!
 
-  """Unique ID for the result"""
+  """Unique ID for the form"""
   rowId: Int!
 }
 
@@ -5986,12 +5974,6 @@ type UpdateFormResultPayload {
   Our root query field type. Allows us to run any query from our mutation payload.
   """
   query: Query
-
-  """Reads a single `FormJson` that is related to this `FormResult`."""
-  formJsonByFormId: FormJson
-
-  """Reads a single `User` that is related to this `FormResult`."""
-  userByUserId: User
 
   """Reads a single `Application` that is related to this `FormResult`."""
   applicationByApplicationId: Application
