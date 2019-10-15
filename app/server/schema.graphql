@@ -92,29 +92,7 @@ type Application implements Node {
     """Read all values in the set after (below) this cursor."""
     after: Cursor
   ): EmissionDataConnection!
-
-  """Reads and enables pagination through a set of `FacilityDatum`."""
-  swrsFacilityData(
-    reportingYear: String
-
-    """Only read the first `n` values of the set."""
-    first: Int
-
-    """Only read the last `n` values of the set."""
-    last: Int
-
-    """
-    Skip the first `n` values from our `after` cursor, an alternative to cursor
-    based pagination. May not be used with `last`.
-    """
-    offset: Int
-
-    """Read all values in the set before (above) this cursor."""
-    before: Cursor
-
-    """Read all values in the set after (below) this cursor."""
-    after: Cursor
-  ): FacilityDataConnection!
+  swrsFacilityData(reportingYear: String): FacilityDatum
 
   """Reads and enables pagination through a set of `FuelDatum`."""
   swrsFuelData(
@@ -138,52 +116,8 @@ type Application implements Node {
     """Read all values in the set after (below) this cursor."""
     after: Cursor
   ): FuelDataConnection!
-
-  """Reads and enables pagination through a set of `OperatorContactDatum`."""
-  swrsOperatorContactData(
-    reportingYear: String
-
-    """Only read the first `n` values of the set."""
-    first: Int
-
-    """Only read the last `n` values of the set."""
-    last: Int
-
-    """
-    Skip the first `n` values from our `after` cursor, an alternative to cursor
-    based pagination. May not be used with `last`.
-    """
-    offset: Int
-
-    """Read all values in the set before (above) this cursor."""
-    before: Cursor
-
-    """Read all values in the set after (below) this cursor."""
-    after: Cursor
-  ): OperatorContactDataConnection!
-
-  """Reads and enables pagination through a set of `OrganisationDatum`."""
-  swrsOrganisationData(
-    reportingYear: String
-
-    """Only read the first `n` values of the set."""
-    first: Int
-
-    """Only read the last `n` values of the set."""
-    last: Int
-
-    """
-    Skip the first `n` values from our `after` cursor, an alternative to cursor
-    based pagination. May not be used with `last`.
-    """
-    offset: Int
-
-    """Read all values in the set before (above) this cursor."""
-    before: Cursor
-
-    """Read all values in the set after (below) this cursor."""
-    after: Cursor
-  ): OrganisationDataConnection!
+  swrsOperatorContactData(reportingYear: String): OperatorContactDatum
+  swrsOrganisationData(reportingYear: String): OrganisationDatum
 }
 
 """
@@ -2959,32 +2893,6 @@ input FacilityCondition {
   facilityCountry: String
 }
 
-"""A connection to a list of `FacilityDatum` values."""
-type FacilityDataConnection {
-  """A list of `FacilityDatum` objects."""
-  nodes: [FacilityDatum]!
-
-  """
-  A list of edges which contains the `FacilityDatum` and cursor to aid in pagination.
-  """
-  edges: [FacilityDataEdge!]!
-
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """The count of *all* `FacilityDatum` you could get from the connection."""
-  totalCount: Int!
-}
-
-"""A `FacilityDatum` edge in the connection."""
-type FacilityDataEdge {
-  """A cursor for use in pagination."""
-  cursor: Cursor
-
-  """The `FacilityDatum` at the end of the edge."""
-  node: FacilityDatum
-}
-
 type FacilityDatum {
   reportId: Int
   swrsReportId: Int
@@ -4062,34 +3970,6 @@ interface Node {
   id: ID!
 }
 
-"""A connection to a list of `OperatorContactDatum` values."""
-type OperatorContactDataConnection {
-  """A list of `OperatorContactDatum` objects."""
-  nodes: [OperatorContactDatum]!
-
-  """
-  A list of edges which contains the `OperatorContactDatum` and cursor to aid in pagination.
-  """
-  edges: [OperatorContactDataEdge!]!
-
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """
-  The count of *all* `OperatorContactDatum` you could get from the connection.
-  """
-  totalCount: Int!
-}
-
-"""A `OperatorContactDatum` edge in the connection."""
-type OperatorContactDataEdge {
-  """A cursor for use in pagination."""
-  cursor: Cursor
-
-  """The `OperatorContactDatum` at the end of the edge."""
-  node: OperatorContactDatum
-}
-
 type OperatorContactDatum {
   reportId: Int
   swrsReportId: Int
@@ -4262,34 +4142,6 @@ input OrganisationCondition {
 
   """Checks for equality with the object’s `operatorCountry` field."""
   operatorCountry: String
-}
-
-"""A connection to a list of `OrganisationDatum` values."""
-type OrganisationDataConnection {
-  """A list of `OrganisationDatum` objects."""
-  nodes: [OrganisationDatum]!
-
-  """
-  A list of edges which contains the `OrganisationDatum` and cursor to aid in pagination.
-  """
-  edges: [OrganisationDataEdge!]!
-
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """
-  The count of *all* `OrganisationDatum` you could get from the connection.
-  """
-  totalCount: Int!
-}
-
-"""A `OrganisationDatum` edge in the connection."""
-type OrganisationDataEdge {
-  """A cursor for use in pagination."""
-  cursor: Cursor
-
-  """The `OrganisationDatum` at the end of the edge."""
-  node: OrganisationDatum
 }
 
 type OrganisationDatum {
@@ -5443,30 +5295,7 @@ type Query implements Node {
     """Read all values in the set after (below) this cursor."""
     after: Cursor
   ): EmissionDataConnection!
-
-  """Reads and enables pagination through a set of `FacilityDatum`."""
-  getSwrsFacilityData(
-    facilityId: Int
-    reportingYear: String
-
-    """Only read the first `n` values of the set."""
-    first: Int
-
-    """Only read the last `n` values of the set."""
-    last: Int
-
-    """
-    Skip the first `n` values from our `after` cursor, an alternative to cursor
-    based pagination. May not be used with `last`.
-    """
-    offset: Int
-
-    """Read all values in the set before (above) this cursor."""
-    before: Cursor
-
-    """Read all values in the set after (below) this cursor."""
-    after: Cursor
-  ): FacilityDataConnection!
+  getSwrsFacilityData(facilityId: Int, reportingYear: String): FacilityDatum
 
   """Reads and enables pagination through a set of `FuelDatum`."""
   getSwrsFuelData(
@@ -5491,54 +5320,8 @@ type Query implements Node {
     """Read all values in the set after (below) this cursor."""
     after: Cursor
   ): FuelDataConnection!
-
-  """Reads and enables pagination through a set of `OperatorContactDatum`."""
-  getSwrsOperatorContactData(
-    facilityId: Int
-    reportingYear: String
-
-    """Only read the first `n` values of the set."""
-    first: Int
-
-    """Only read the last `n` values of the set."""
-    last: Int
-
-    """
-    Skip the first `n` values from our `after` cursor, an alternative to cursor
-    based pagination. May not be used with `last`.
-    """
-    offset: Int
-
-    """Read all values in the set before (above) this cursor."""
-    before: Cursor
-
-    """Read all values in the set after (below) this cursor."""
-    after: Cursor
-  ): OperatorContactDataConnection!
-
-  """Reads and enables pagination through a set of `OrganisationDatum`."""
-  getSwrsOrganisationData(
-    facilityId: Int
-    reportingYear: String
-
-    """Only read the first `n` values of the set."""
-    first: Int
-
-    """Only read the last `n` values of the set."""
-    last: Int
-
-    """
-    Skip the first `n` values from our `after` cursor, an alternative to cursor
-    based pagination. May not be used with `last`.
-    """
-    offset: Int
-
-    """Read all values in the set before (above) this cursor."""
-    before: Cursor
-
-    """Read all values in the set after (below) this cursor."""
-    after: Cursor
-  ): OrganisationDataConnection!
+  getSwrsOperatorContactData(facilityId: Int, reportingYear: String): OperatorContactDatum
+  getSwrsOrganisationData(facilityId: Int, reportingYear: String): OrganisationDatum
 
   """Reads and enables pagination through a set of `CiipApplication`."""
   searchApplicationList(
